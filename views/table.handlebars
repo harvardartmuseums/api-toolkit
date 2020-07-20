@@ -1,0 +1,53 @@
+<div class="tablelinks">
+  <a class="link1" href="/century">Century</a><br>
+  <a class="link2" href="/classification">Classification</a><br>
+  <a class="link3" href="/color">Color</a><br>
+  <a class="link4" href="/culture">Culture</a><br>
+  <a class="link5" href="/period">Period</a><br>
+  <a class="link6" href="/place">Place</a><br>
+  <a class="link7" href="/technique">Technique</a><br>
+  <a class="link8" href="/worktype">Worktype</a><br>
+</div>
+
+
+<h1>{{title}}</h1>
+<input id="filter-value" class="inputfield" type="text" placeholder="Filter results">
+
+<table id="endpoint-table">
+  <tr class="header">
+    <th style="width:60%;">Name</th>
+    <th style="width:20%;">ID</th>
+    <th style="width:20%;">Object Count</th>
+  </tr>
+  {{#each records}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{id}}</td>
+      <td>{{objectcount}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+
+<script>
+
+var valueEl = document.getElementById("filter-value");
+
+function updateFilter() {
+  table.setFilter("name","like", valueEl.value);
+}
+
+document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+
+
+var table = new Tabulator("#endpoint-table", {
+  height:"500px",
+  layout:"fitColumns",
+  backgroundColor:"#F5F5F5",
+  columns:[
+  {title:"Name", field:"name"},
+  {title:"ID", field:"id", sorter:"number"},
+  {title:"Object Count", field:"objectcount", sorter:"number"}
+  ],
+});
+</script>

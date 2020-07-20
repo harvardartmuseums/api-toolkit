@@ -1,0 +1,118 @@
+<h2>LESSON 4 OF 6</h2>
+<h1>Getting started with the HAM API</h1>
+
+<div class="lesson-text">
+
+<p>First, sign up for an API key <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkmEBqH76HLMMiCC-GPPnhcvHC9aJS86E32dOd0Z8MpY2rvQ/viewform">using this link</a>. Within a few minutes of completing the form, you will receive an email containing a unique code that allows you to access the museum’s data.<br><br>
+
+To retrieve data from the API, you must build queries that tell the API what to look for. A query, taking the form of a URL, consists of multiple components that act as building blocks.<br></p>
+
+<div class="components">
+	<p>A query to retrieve all of the object data looks like this:</p>
+	<h4>https://api.harvardartmuseums.org/object?apikey=0000-0000-0000-000</h4>
+</div>
+
+<div class="warning"><b>Warning:</b> If you try clicking on the link above, it will say “unauthorized” because it is using an invalid API key. Replace the example API key with your own.</div>
+
+<div class="imagetoside">
+	<div class="sidetext">
+		<p>When you go to the URL query, the unformatted data may look unreadable—try downloading a browser extension that reformats JSON data:
+			<li>
+				<a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">JSONview</a> (Google Chrome)
+			</li>
+			<li>
+				 <a href="https://www.microsoft.com/en-us/p/json-formatter-for-edge/9nz9d2j86w6s?activetab=pivot:overviewtab">JSON Formatter for Edge</a> (Microsoft Edge)
+			</li>
+			<li>
+				 <a href="https://apps.apple.com/us/app/json-peep-for-safari/id1458969831?mt=12">JSON Peep for Safari</a> (Safari)
+			</li>
+			<li>
+				 <a href="https://addons.mozilla.org/en-US/firefox/addon/basic-json-formatter/">Basic JSON Formatter</a> (Mozilla Firefox)
+			</li>
+		</p>
+	</div>
+	<img src="/images/beforeafterextension.jpg"></img>
+</div>
+
+<div class="components">
+	<p>The structure of a query follows a pattern. The four basic components are:	</p>
+	<div class="structure">
+		<h4 style="color:Tomato">Harvard Art Museums URL</h4> + <h4 style="color:SlateBlue">Resource</h4> + <h4 style="color:DodgerBlue">Filter (optional)</h4> + <h4 style="color:MediumSeaGreen">API key</h4>
+	</div>
+</div>
+
+<p class="exampletitle">All of the objects made in the year 2000:</p>
+	<table id="url-breakdown">
+		<tr>
+			<td class="url1">https://api.harvardartmuseums.org/</td>
+			<td class="url2">object</td>
+			<td class="urlpunc">?</td>
+			<td class="url3">yearmade=2002</td>
+			<td class="urlpunc">&</td>
+			<td class="url4">apikey=0000-0000-0000-0000</td>
+		</tr>
+		<tr>
+			<td class="url1 head1">URL</td>
+			<td class="url2 head2">Resource</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url4 head4">API</td>
+		</tr>
+	</table>
+
+<br><br><p>Alongside Objects, the Harvard Art Museums also provides access to other resources such as Exhibits, Artists, and Publications. <a href="/endpoints">Here is a full list of all resources available.</a></p>
+
+<p class="exampletitle">All exhibits from the 18th century:</p>
+	<table id="url-breakdown">
+		<tr>
+			<td class="url1">https://api.harvardartmuseums.org/</td>
+			<td class="url2">exhibit</td>
+			<td class="urlpunc">?</td>
+			<td class="url3">after=1700</td>
+			<td class="urlpunc">&</td>
+			<td class="url3">before=1800</td>
+			<td class="urlpunc">&</td>
+			<td class="url4">apikey=0000-0000-0000-0000</td>
+		</tr>
+		<tr>
+			<td class="url1 head1">URL</td>
+			<td class="url2 head2">Resource</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url4 head4">API</td>
+		</tr>
+	</table>
+
+<div class="tip"> <b>Tip:</b> To find the different types of Filters you can apply onto a Resource, look at <a href="https://github.com/harvardartmuseums/api-docs">The Harvard Art Museums' API documentation.</a> Going to the <a href="https://github.com/harvardartmuseums/api-docs/blob/master/sections/object.md">Object Page</a>, for example, will give you the numerous Parameters—or Filters—that you can use for the object resource.</div>
+
+<p class="exampletitle"> All objects made with pastels from the United States:</p>
+	<table id="url-breakdown">
+		<tr>
+			<td class="url1">https://api.harvardartmuseums.org/</td>
+			<td class="url2">object</td>
+			<td class="urlpunc">?</td>
+			<td class="url3">medium=2028216</td>
+			<td class="urlpunc">&</td>
+			<td class="url3">place=2028213</td>
+			<td class="urlpunc">&</td>
+			<td class="url4">apikey=0000-0000-0000-0000</td>
+		</tr>
+		<tr>
+			<td class="url1 head1">URL</td>
+			<td class="url2 head2">Resource</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url4 head4">API</td>
+		</tr>
+	</table>
+
+	<br><br><p>You can apply Filters to find more specific pieces in the collection. In the example above, the Medium and Place fields are equal to numerical IDs rather than their names. To find the entire list of names with their corresponding IDs, visit the <a href="/table">Endpoints Tables page</a>.
+
+</div>

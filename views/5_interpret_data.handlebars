@@ -1,0 +1,55 @@
+<h2>LESSON 5 OF 6</h2>
+<h1>Interpretting the API data</h1>
+
+<div class="lesson-text">
+  <p>
+    Now that you are able to access the data within the API, let's take a look at the data itself.
+  </p>
+
+  {{> jsonexample1}}
+  <p>This example query demonstrates how the dataset is broken up into two parts: info and records. Info represents the data about the data—how many total objects and pages are in the query. Records contain detailed information about each individual object.</p>
+
+  <p>Each query automatically breaks the records into groups of 10, and, to access the next set of 10, you must move forward to the next page. In the Info section, the link to the subsequent page is provided.
+
+  <p class="exampletitle">In order to increase the size of records in each page to 50, append "&size=50" to the end of your query.</p>
+  	<table id="url-breakdown">
+  		<tr>
+  			<td class="url1">https://api.harvardartmuseums.org/</td>
+  			<td class="url2">object</td>
+  			<td class="urlpunc">?</td>
+  			<td class="url4alt">apikey=0000-0000-0000-0000</td>
+        <td class="urlpunc">&</td>
+        <td class="url3alt">size=50</td>
+  		</tr>
+  		<tr>
+  			<td class="url1 head1">URL</td>
+  			<td class="url2 head2">Resource</td>
+  			<td></td>
+  			<td class="url4 head4">API</td>
+        <td></td>
+        <td class="url3 head3">Filter</td>
+  		</tr>
+  	</table>
+
+  <br><br><br><p>To see the type of data each record offers, look at the record for a single object:</p>
+
+  <p class="exampletitle">Georgia O'Keefe's <a href="https://www.harvardartmuseums.org/collections/object/312684"><i>Red and Pink</i></a></p>
+    <table id="url-breakdown">
+      <tr>
+        <td class="url1">https://api.harvardartmuseums.org/</td>
+        <td class="url2">object/312684</td>
+        <td class="urlpunc">?</td>
+        <td class="url4">apikey=0000-0000-0000-0000</td>
+      </tr>
+      <tr>
+        <td class="url1 head1">URL</td>
+        <td class="url2 head2">Resource</td>
+        <td></td>
+        <td class="url4 head4">API</td>
+      </tr>
+    </table>
+
+  <p>Here, you can see how much information the museum stores for each individual artwork. Not only is the museum sharing the basic information of the piece and artist, but it is also revealing the history of the piece related to the museum through accession information, exhibit history, and museum location.
+
+
+</div>

@@ -1,0 +1,23 @@
+{
+  "name": "api-toolkit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "datatables.net": "^1.10.21",
+    "datatables.net-dt": "^1.10.21",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.0.0",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.5.1",
+    "jsdom": "^16.3.0",
+    "lodash": "^4.17.19",
+    "node-fetch": "^2.6.0",
+    "tabulator-tables": "^4.7.2"
+  }
+}

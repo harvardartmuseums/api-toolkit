@@ -1,0 +1,15 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border-width:.1em .1em .1em .8em;padding:.2em .6em; padding: 20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> record <span style="color: #AA22FF; font-weight: bold">in</span> records:
+
+    <span style="color: #408080; font-style: italic"># Convert object ID to a string so it&#39;s accessible as a dictionary key</span>
+    objectid <span style="color: #666666">=</span> <span style="color: #008000">str</span>(record[<span style="color: #BA2121">&#39;objectid&#39;</span>])
+
+    <span style="color: #408080; font-style: italic"># If the object already has a recorded move, increment by one</span>
+    <span style="color: #008000; font-weight: bold">if</span> (views<span style="color: #666666">.</span>get(objectid)):
+        views[objectid] <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+    <span style="color: #408080; font-style: italic"># Otherwise, record the object&#39;s first move</span>
+    <span style="color: #008000; font-weight: bold">else</span>:
+        views[objectid] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+
+<span style="color: #408080; font-style: italic"># Take the dictionary of recorded views and get the one with the most views</span>
+object_id <span style="color: #666666">=</span> <span style="color: #008000">max</span>(views, key<span style="color: #666666">=</span>views<span style="color: #666666">.</span>get)
+</pre></div>

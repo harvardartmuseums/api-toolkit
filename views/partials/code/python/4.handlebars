@@ -1,0 +1,57 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border-width:.1em .1em .1em .8em;padding:.2em .6em; padding: 20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">requests</span>
+
+<span style="color: #408080; font-style: italic"># Create a dictionary for all views with their respective object</span>
+views <span style="color: #666666">=</span> {}
+
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">viewsCounter</span>(url):
+    r <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(url)
+
+    <span style="color: #408080; font-style: italic"># Convert data to JSON format</span>
+    data <span style="color: #666666">=</span> r<span style="color: #666666">.</span>json()
+
+    <span style="color: #408080; font-style: italic"># Extract the info and records</span>
+    info <span style="color: #666666">=</span> data[<span style="color: #BA2121">&#39;info&#39;</span>]
+    records <span style="color: #666666">=</span> data[<span style="color: #BA2121">&#39;records&#39;</span>]
+
+    <span style="color: #008000; font-weight: bold">for</span> record <span style="color: #AA22FF; font-weight: bold">in</span> records:
+
+        <span style="color: #408080; font-style: italic"># Convert object ID to a string so it&#39;s accessible as a dictionary key</span>
+        objectid <span style="color: #666666">=</span> <span style="color: #008000">str</span>(record[<span style="color: #BA2121">&#39;objectid&#39;</span>])
+
+        <span style="color: #408080; font-style: italic"># If the object already has a recorded move, increment by one</span>
+        <span style="color: #008000; font-weight: bold">if</span> (views<span style="color: #666666">.</span>get(objectid)):
+            views[objectid] <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+        <span style="color: #408080; font-style: italic"># Otherwise, record the object&#39;s first move</span>
+        <span style="color: #008000; font-weight: bold">else</span>:
+            views[objectid] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+    <span style="color: #408080; font-style: italic"># Error handling if it reaches &gt;10,000 records</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        <span style="color: #008000; font-weight: bold">if</span> (info[<span style="color: #BA2121">&#39;next&#39;</span>]):
+            viewsCounter(info[<span style="color: #BA2121">&#39;next&#39;</span>])
+    <span style="color: #008000; font-weight: bold">except</span>:
+        <span style="color: #008000; font-weight: bold">pass</span>
+
+<span style="color: #408080; font-style: italic"># Find all recorded views</span>
+url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;https://api.harvardartmuseums.org/activity?type=studycenterviews&amp;q=date:&gt;2020&amp;apikey=0000-0000-0000-000&amp;size=100&#39;</span>
+viewsCounter(url)
+
+<span style="color: #408080; font-style: italic"># Take the dictionary of recorded views and get the one with the most views</span>
+object_id <span style="color: #666666">=</span> <span style="color: #008000">max</span>(views, key<span style="color: #666666">=</span>views<span style="color: #666666">.</span>get)
+
+<span style="color: #408080; font-style: italic"># Return the number of times that object has been seen in 2020, convert to string</span>
+object_views <span style="color: #666666">=</span> <span style="color: #008000">str</span>(views[object_id])
+
+<span style="color: #408080; font-style: italic"># Fetch the information of that object</span>
+object_url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;https://api.harvardartmuseums.org/object/&#39;</span> <span style="color: #666666">+</span> object_id <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;?apikey=0000-0000-0000-0000&#39;</span>
+object_info <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(object_url)
+
+<span style="color: #408080; font-style: italic"># Convert to JSON format</span>
+object_data <span style="color: #666666">=</span> object_info<span style="color: #666666">.</span>json()
+
+<span style="color: #408080; font-style: italic"># Get title and artist of object</span>
+object_title <span style="color: #666666">=</span> object_data[<span style="color: #BA2121">&quot;title&quot;</span>]
+object_artist <span style="color: #666666">=</span> object_data[<span style="color: #BA2121">&quot;people&quot;</span>][<span style="color: #666666">0</span>][<span style="color: #BA2121">&quot;name&quot;</span>]
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;The object that has been viewed the most in 2020 is &#39;</span> <span style="color: #666666">+</span> object_title <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; by &#39;</span> <span style="color: #666666">+</span> object_artist <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; (&#39;</span> <span style="color: #666666">+</span> object_id <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;)&#39;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; at &#39;</span> <span style="color: #666666">+</span> object_views <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; views&#39;</span>)
+</pre></div>

@@ -1,0 +1,16 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border-width:.1em .1em .1em .8em;padding:.2em .6em; padding: 20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic"># Retrieve the top object&#39;s number of views, convert to string</span>
+object_views <span style="color: #666666">=</span> <span style="color: #008000">str</span>(views[object_id])
+
+<span style="color: #408080; font-style: italic"># Fetch the information of that object</span>
+object_url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;https://api.harvardartmuseums.org/object/&#39;</span> <span style="color: #666666">+</span> object_id <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;?apikey=0000-0000-0000-0000&#39;</span>
+object_info <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(object_url)
+
+<span style="color: #408080; font-style: italic"># Convert to JSON format</span>
+object_data <span style="color: #666666">=</span> object_info<span style="color: #666666">.</span>json()
+
+<span style="color: #408080; font-style: italic"># Get title and artist of object</span>
+object_title <span style="color: #666666">=</span> object_data[<span style="color: #BA2121">&quot;title&quot;</span>]
+object_artist <span style="color: #666666">=</span> object_data[<span style="color: #BA2121">&quot;people&quot;</span>][<span style="color: #666666">0</span>][<span style="color: #BA2121">&quot;name&quot;</span>]
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;The object that has been viewed the most in 2020 is &#39;</span> <span style="color: #666666">+</span> object_title <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; by &#39;</span> <span style="color: #666666">+</span> object_artist <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; (&#39;</span> <span style="color: #666666">+</span> object_id <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;)&#39;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; at &#39;</span> <span style="color: #666666">+</span> object_views <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; views&#39;</span>)
+</pre></div>

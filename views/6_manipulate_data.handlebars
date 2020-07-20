@@ -1,0 +1,79 @@
+<h2>LESSON 6 OF 6</h2>
+<h1>Manipulating the API data</h1>
+
+
+<div class="lesson-text">
+
+<p>Now that you know how to interpret the data, you can use code to manipulate it in order to answer interesting questions and realize greater trends.</p>
+
+<p>For instance, Harvard Art Museums tracks whenever an object is physically viewed at the <a href="https://www.harvardartmuseums.org/teaching-and-research/art-study-center">Art Study Center</a>, where the public can request to view pieces not in the galleries. By querying for all recorded study center views, you can parse through each view, building a table that records the total number of views for each object. From there, you can discover what objects are viewed the most.</p>
+
+<p>To do this, first determine your query:</p>
+
+<p class="exampletitle">Study Center Views</p>
+	<table id="url-breakdown">
+		<tr>
+			<td class="url1">https://api.harvardartmuseums.org/</td>
+			<td class="url2">activity</td>
+			<td class="urlpunc">?</td>
+			<td class="url3">type=studycenterviews</td>
+			<td class="urlpunc">&</td>
+			<td class="url4">apikey=0000-0000-0000-0000</td>
+		</tr>
+		<tr>
+			<td class="url1 head1">URL</td>
+			<td class="url2 head2">Resource</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url4 head4">API</td>
+		</tr>
+	</table>
+
+<div class="warning"><b>Warning:</b> With this query, there are more than 300,000 records. Because the API has an upper limit of 10,000 requests, this means this data set is too large. To fix this, we must narrow our dataset by applying more filters.</div>
+
+<p>To get under 10,000 records, let's only retrieve Study Center views from 2020. To do this, we must apply a filter. Even though each record contains the date of the view, the Activity resource does not have a specific date filter. To filter by date, we must use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-uri-request.html">Elasticsearch URI Search</a>. Essentially, this allows us to customize a filter based on the fields available in the record. </p>
+
+<p class="exampletitle">Study Center Views in 2020:</p>
+	<table id="url-breakdown">
+		<tr>
+			<td class="url1">https://api.harvardartmuseums.org/</td>
+			<td class="url2">activity</td>
+			<td class="urlpunc">?</td>
+			<td class="url3">type=studycenterviews</td>
+			<td class="urlpunc">&</td>
+			<td class="url3">q=date:>2020</td>
+			<td class="urlpunc">&</td>
+			<td class="url4">apikey=0000-0000-0000-0000</td>
+		</tr>
+		<tr>
+			<td class="url1 head1">URL</td>
+			<td class="url2 head2">Resource</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url3 head3">Filter</td>
+			<td></td>
+			<td class="url4 head4">API</td>
+		</tr>
+	</table>
+
+<br><br><p>In this example, the q filter is going into the records' "date" fields and retrieving records that are greater than or equal to the year 2020.</p>
+
+
+<p>To access this data in Python, you must form a request. The following lines of code will ‘print’ the JSON records in your computer’s terminal:</p>
+
+{{> "code/python/1" }}
+
+<p>Now, that the code can retrieve data, the code will parse through each record, appending to a dictionary that records each time an object has been viewed. Then, it will find the ID of the object that has been viewed the most.</p>
+
+{{> "code/python/2"}}
+
+<p>By referencing our own dictionary, the code then retrieves the object view count for the most-viewed object. After this, the code sends a query that retrieves the data for the individual most-viewed object. This allows us to access its title and artist. Then, to finish the code, it prints a message that compiles the object data.</p>
+
+{{> "code/python/3"}}
+
+<p>Although this code works, the size of data is limited to 10 since the data is split into pages. Thus, to access all 8000+ records available, the code must iterate through each page. To do this, you must wrap part of your code into a function that is called every time there is a "next" page available. To reduce the time it takes to run the code, you can also increase the size of each page using the size filter.</p>
+
+{{> "code/python/4"}}
+</div>

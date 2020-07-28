@@ -20,7 +20,7 @@ h2 {
   margin: 0px 0px;
   line-height: 15px;
   font-size: 15px;
-  color: #676767
+  color: #676767;
 }
 
 h3 {
@@ -66,6 +66,11 @@ b {
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.titlelink {
+  text-decoration: none;
+
 }
 
 .logo {
@@ -282,6 +287,10 @@ b {
   background-color: Silver;
 }
 
+.number-icon img {
+  width: 40%;
+}
+
 .datasources {
   margin-top: 80px;
 }
@@ -381,5 +390,137 @@ b {
 
 .inputfield{
   padding: 10px;
-  margin: 10px 0px;
+  margin: 30px 0px 10px 0px;
+}
+
+.navigationtop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+
+.navigationtop a {
+  text-decoration: none;
+  color: #676767;
+}
+
+.navigationbottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.navigationbottom a {
+  text-decoration: none;
+  color: #676767;
+}
+
+.arrow {
+  border: solid #676767;
+  border-radius: 2px;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.getstarted {
+  background-color: Tomato;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 60px;
+  margin-top: 70px;
+}
+
+.getstartedbutton {
+  margin-top: 60px;
+}
+
+.welcomebanner {
+  width: 100%;
+  background-image: url('../images/harvardartmuseums.jpg');
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.welcometitle {
+  background-color: rgba(0,0,0,.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 150px 0px;
+  text-align: center;
+}
+
+.welcome {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.welcome p {
+  text-align: left;
+}
+
+.welcometext {
+  margin-top: 50px;
+}
+
+.welcometitle h2 {
+  color: white;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.welcometitle h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.resource-guide-table {
+  border-radius: 10px;
+  border-collapse: collapse;
+  margin: 60px 0px;
+}
+
+.resource-guide-table tr th {
+  background-color: WhiteSmoke;
+  border: 1px solid Gray;
+  color: #555555;
+  padding: 5px;
+}
+
+.resource-guide-table tr td {
+  border: 1px solid #676767;
+  padding: 15px;
+}
+
+.resource-guide-table tr:hover {
+  background-color: WhiteSmoke;
+}
+
+.resource:hover {
+  cursor: pointer;
+}
+
+.resourcetitle {
+  text-align: center;
+}
+
+.resource-guide-table a {
+  display: block;
 }

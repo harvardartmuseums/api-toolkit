@@ -31,7 +31,7 @@ app.get('/2', function (req, res) {
 });
 
 app.get('/3', function (req, res) {
-    res.render('3_ham_api');
+    res.render('3_examples');
 });
 
 app.get('/4', function (req, res) {

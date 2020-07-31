@@ -553,7 +553,7 @@ b {
 }
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
 
   body {
     width: 100%;
@@ -688,7 +688,7 @@ b {
 }
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
   #mobiletablelinks {
     display: block;
     margin-bottom: 30px;
@@ -719,6 +719,7 @@ b {
 
   .lessons a {
     align-items: center;
-    padding-top: 10px;
+    padding-top: 20px;
   }
+
 }

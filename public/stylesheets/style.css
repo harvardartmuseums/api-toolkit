@@ -293,9 +293,12 @@ b {
 
 .datasources {
   margin-top: 80px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.data-display {
+.source {
   width: 33%;
   padding: 0px 30px;
   vertical-align: top;
@@ -393,6 +396,10 @@ b {
   margin: 30px 0px 10px 0px;
 }
 
+.filter-wrap {
+  text-align: center;
+}
+
 .navigationtop {
   display: flex;
   justify-content: space-between;
@@ -413,6 +420,10 @@ b {
 .navigationbottom a {
   text-decoration: none;
   color: #676767;
+}
+
+.next {
+  text-align: right;
 }
 
 .arrow {
@@ -523,4 +534,191 @@ b {
 
 .resource-guide-table a {
   display: block;
+}
+
+.hamburger {
+  display: none;
+}
+
+#mobilemenu {
+  display: none;
+}
+
+#mobiletablelinks {
+  display: none;
+}
+
+.table-wrapper {
+  overflow-x: scroll;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+  body {
+    width: 100%;
+    margin-left: 0%;
+    margin-top: 60px;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .links {
+    display: none;
+  }
+
+  h3 {
+    margin: 0px;
+  }
+
+  .hamburger {
+    display: inline;
+    width: 40px;
+  }
+
+  .hamburger img {
+    width: 70%;
+    opacity: 60%;
+  }
+
+  .welcometitle {
+    padding: 100px 0px;
+  }
+
+  .welcometitle h1 {
+    font-size: 30px;
+  }
+
+  .welcometitle h2 {
+    font-size: 16px;
+  }
+
+  .welcome {
+    width: 80%;
+    margin-bottom: 70px;
+  }
+
+  .imagetoside {
+    flex-direction: column-reverse;
+    margin-top: 40px;
+  }
+
+  .imagetoside .sidetext {
+    width: 100%;
+    padding-right: 0px;
+    padding-top: 20px;
+  }
+
+  .imagetoside img {
+    width: 100%;
+  }
+
+  .datasources {
+    flex-direction: column;
+  }
+
+
+  .next {
+    width: 50%;
+    padding-left: 10px;
+  }
+
+  .previous {
+    width:50%;
+    padding-right: 10px;
+  }
+
+  .datasources {
+    flex-direction: column;
+  }
+
+  .source {
+    width: 100%;
+    padding: 20px 0px;
+  }
+
+  #mobilemenu {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px 40px;
+    z-index: 10000;
+    border: 1px solid WhiteSmoke;
+    border-bottom-left-radius: 10px;
+  }
+
+  .mobilelink {
+    text-decoration: none;
+    padding: 10px 0px;
+    color: #333;
+  }
+
+  .mobilelink + .mobilelink {
+    border-top: 1px solid WhiteSmoke;
+  }
+
+  #mobilemenu h2 {
+    margin-bottom: 10px;
+  }
+
+  .tablelinks {
+    display: none;
+  }
+
+  #mobiletablelinks {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  #mobiletablelinks {
+    display: block;
+    margin-bottom: 30px;
+    padding: 5px;
+  }
+
+  .tablelinks {
+    display:none;
+  }
+
+  .sidebar {
+    width: 25%
+  }
+
+  body {
+    width: 75%;
+    margin-left: 25%;
+  }
+
+  .number-icon {
+    width: 30px;
+    margin: 0px;
+  }
+
+  .lesson-w-icon p {
+    margin: 0px;
+  }
+
+  .lessons a {
+    align-items: center;
+    padding-top: 10px;
+  }
 }

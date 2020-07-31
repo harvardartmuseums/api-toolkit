@@ -10,8 +10,6 @@ data = r.json()
 info = data['info']
 records = data['records']
 
-print(records)
-
 # Create a dictionary for all moves with their respective object
 views = {}
 

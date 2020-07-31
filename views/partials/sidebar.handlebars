@@ -3,44 +3,73 @@
     <img class="logo" src="/images/hamlogo.png">
     <a class="titlelink" href="/"><h3> API Toolkit and Guide</h3></a>
 
-    <h2>LESSONS</h2>
-    <div class="lessons">
-      <a class="lesson-w-icon" href="/1">
-        <p class="number-icon">1</p>
-        <p class="lesson-title">Museum Data</p>
-      </a>
-      <a class="lesson-w-icon" href="/2">
-        <p class="number-icon">2</p>
-        <p class="lesson-title">APIs</p>
-      </a>
-      <a class="lesson-w-icon" href="/3">
-        <p class="number-icon">3</p>
-        <p class="lesson-title">Examples</p>
-      </a>
-      <a class="lesson-w-icon" href="/4">
-        <p class="number-icon">4</p>
-        <p class="lesson-title">Getting Started</p>
-      </a>
-      <a class="lesson-w-icon" href="/5">
-        <p class="number-icon">5</p>
-        <p class="lesson-title">Interpretting Data</p>
-      </a>
-      <a class="lesson-w-icon" href="/6">
-        <p class="number-icon">6</p>
-        <p class="lesson-title">Manipulating Data</p>
-      </a>
+    <div class="hamburger" onClick="openmenu()">
+      <img src="images/Hamburger_icon.png"></img>
     </div>
+    <div class="links">
+      <h2>LESSONS</h2>
+      <div class="lessons">
+        <a class="lesson-w-icon" href="/1">
+          <p class="number-icon">1</p>
+          <p class="lesson-title">Museum Data</p>
+        </a>
+        <a class="lesson-w-icon" href="/2">
+          <p class="number-icon">2</p>
+          <p class="lesson-title">APIs</p>
+        </a>
+        <a class="lesson-w-icon" href="/3">
+          <p class="number-icon">3</p>
+          <p class="lesson-title">Examples</p>
+        </a>
+        <a class="lesson-w-icon" href="/4">
+          <p class="number-icon">4</p>
+          <p class="lesson-title">Getting Started</p>
+        </a>
+        <a class="lesson-w-icon" href="/5">
+          <p class="number-icon">5</p>
+          <p class="lesson-title">Interpretting Data</p>
+        </a>
+        <a class="lesson-w-icon" href="/6">
+          <p class="number-icon">6</p>
+          <p class="lesson-title">Manipulating Data</p>
+        </a>
+      </div>
 
-    <h2>REFERENCES</h2>
-    <div class="lessons">
-      <a class="lesson-w-icon" href="/resources">
-        <p class="number-icon"><img src="/images/resource.png"></img></p>
-        <p class="lesson-title">Resource Guide</p>
-      </a>
-      <a class="lesson-w-icon" href="/labels">
-        <p class="number-icon"><img src="/images/resource.png"></img></p>
-        <p class="lesson-title">Resource Labels</p>
-      </a>
+      <h2>REFERENCES</h2>
+      <div class="lessons">
+        <a class="lesson-w-icon" href="/resources">
+          <p class="number-icon"><img src="/images/resource.png"></img></p>
+          <p class="lesson-title">Resource Guide</p>
+        </a>
+        <a class="lesson-w-icon" href="/labels">
+          <p class="number-icon"><img src="/images/resource.png"></img></p>
+          <p class="lesson-title">Resource Labels</p>
+        </a>
+      </div>
     </div>
   </div>
 </sidebar>
+
+<div id="mobilemenu" style="display:none;">
+  <h2>LESSONS</h2>
+  <a href="/1" class="mobilelink">1. Museum Data</a>
+  <a href="/2" class="mobilelink">2. APIs</a>
+  <a href="/3" class="mobilelink">3. Examples</a>
+  <a href="/4" class="mobilelink">4. Getting Started</a>
+  <a href="/5" class="mobilelink">5. Interpretting Data</a>
+  <a href="/6" class="mobilelink">6. Manipulating Data</a>
+  <br><h2>REFERENCES</h2>
+  <a href="/resources" class="mobilelink">Resource Guide</a>
+  <a href="/labels" class="mobilelink">Resource Labels</a>
+</div>
+
+<script>
+  function openmenu() {
+    if (document.getElementById("mobilemenu").style.display === "none") {
+      document.getElementById("mobilemenu").style.display = "flex"
+    } else {
+      document.getElementById("mobilemenu").style.display = "none"
+      console.log("hey")
+    }
+  }
+</script>

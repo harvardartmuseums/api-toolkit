@@ -1,0 +1,16 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border-width:.1em .1em .1em .8em;padding:.2em .6em; padding: 20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">requests</span>
+
+<span style="color: #408080; font-style: italic"># Find all instances of titles that include &quot;Cat&quot;</span>
+r <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;https://api.harvardartmuseums.org/object?title=cat&amp;apikey=0000-0000-0000-0000&#39;</span>)
+
+<span style="color: #408080; font-style: italic"># Convert data to JSON format</span>
+data <span style="color: #666666">=</span> r<span style="color: #666666">.</span>json()
+
+<span style="color: #408080; font-style: italic"># Extract the info and records</span>
+info <span style="color: #666666">=</span> data[<span style="color: #BA2121">&#39;info&#39;</span>]
+records <span style="color: #666666">=</span> data[<span style="color: #BA2121">&#39;records&#39;</span>]
+
+<span style="color: #408080; font-style: italic"># For each record of objects, print the title and classification</span>
+<span style="color: #008000; font-weight: bold">for</span> record <span style="color: #AA22FF; font-weight: bold">in</span> records:
+    <span style="color: #008000; font-weight: bold">print</span>(record[<span style="color: #BA2121">&#39;title&#39;</span>] <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; --- &#39;</span> <span style="color: #666666">+</span> record[<span style="color: #BA2121">&#39;classification&#39;</span>])
+</pre></div>

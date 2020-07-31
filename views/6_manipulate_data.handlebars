@@ -4,13 +4,30 @@
 
 <div class="lesson-text">
 
-<p>Now that you know how to interpret the data, you can use code to manipulate it in order to answer interesting questions and realize greater trends.</p>
+<p>With a new knowledge of how to interpret query results, we can now discover how to retrieve that data through code. The following example searches for all objects that contain "Cat" in its title.</p>
 
-<p>For instance, Harvard Art Museums tracks whenever an object is physically viewed at the <a href="https://www.harvardartmuseums.org/teaching-and-research/art-study-center">Art Study Center</a>, where the public can request to view objects not in the galleries. By querying for all recorded study center views, you can parse through each view, building a table that records the total number of views for each object. From there, you can discover what objects are viewed the most.</p>
+{{> "code/python/easy"}}
+
+<div class="tip"><p><b>Tip: </b>If you do not have an <a href="https://www.codecademy.com/articles/what-is-an-ide">IDE</a> in order to run programs, <a href="https://repl.it/languages/python3">try using this site</a> to use our code examples. Paste our examples (after changing the API key to your own) into this website and press "Run" in order to see what kind of data our code produces.</p></div>
+
+<br><p>The code above will print the query's record data in one continuous string. Now that we have all of the objects together, we can now seperate each one in order to use individual objects' data within.</p>
+
+<p>Let's go through each record using a <a href="https://www.w3schools.com/python/python_for_loops.asp#:~:text=Previous%20Next%20%E2%9D%AF-,Python%20For%20Loops,other%20object%2Dorientated%20programming%20languages.">For Loop</a>, which iterates through the list of records one-by-one. Each time the loop lands on a record, let's print out both the title and the classification of the object. To access either of these, you use <i>record['title']</i> and <i>record['classification']</i>. Using the same syntax, you can <a href="https://www.w3schools.com/js/js_json_objects.asp">access any other value</a> in the JSON object.</p>
+
+{{> "code/python/easy2"}}
+
+<br><p>Once you run this code, you may notice that it only prints 10 objects, even though there are over 300 objects with the word "Cat" in the title. This is because the code is only operating on the first page of the records. As a quick fix, you can increase the page size to 100 if you want a larger sample size. But to get the full dataset, you must create a pagination function. Essentially, you are wrapping part of the original code into a function that gets called every time there is a "next" page available.
+
+{{> "code/python/easy3"}}
+
+<br><p>Now that you know how to retrieve the data, you can use code to manipulate it in order to answer interesting questions and realize greater trends. The following example is more advanced but builds on key concepts introduced in the first example, like pagination, requesting queries, and accessing JSON values in a record. The key difference is that we are now adding pieces of the records to a <a href="https://www.w3schools.com/python/python_dictionaries.asp">Python Dictionary</a>, and using that Dictionary to compare records and their values to one another.</p>
+
+<p>To begin the example, Harvard Art Museums tracks whenever an object is physically viewed at the <a href="https://www.harvardartmuseums.org/teaching-and-research/art-study-center">Art Study Center</a>, where the public can request to view objects not in the galleries. By querying for all recorded study center views, you can parse through each view, building a table that records the total number of views for each object. From there, you can discover what objects are viewed the most.</p>
 
 <p>To do this, first determine your query:</p>
 
 <p class="exampletitle">Study Center Views</p>
+<div class="table-wrapper">
 	<table id="url-breakdown">
 		<tr>
 			<td class="url1">https://api.harvardartmuseums.org/</td>
@@ -29,12 +46,14 @@
 			<td class="url4 head4">API</td>
 		</tr>
 	</table>
+</div>
 
 <div class="warning"><b>Warning:</b> With this query, there are more than 300,000 records. Because the API has an upper limit of 10,000 requests, this means this data set is too large. To fix this, we must narrow our dataset by applying more filters.</div>
 
 <p>To get under 10,000 records, let's only retrieve Study Center views from 2020. To do this, we must apply a filter. Even though each record contains the date of the view, the Activity resource does not have a specific date filter. To filter by date, we must use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-uri-request.html">Elasticsearch URI Search</a>. Essentially, this allows us to customize a filter based on the fields available in the record. </p>
 
 <p class="exampletitle">Study Center Views in 2020:</p>
+<div class="table-wrapper">
 	<table id="url-breakdown">
 		<tr>
 			<td class="url1">https://api.harvardartmuseums.org/</td>
@@ -57,6 +76,7 @@
 			<td class="url4 head4">API</td>
 		</tr>
 	</table>
+</div>
 
 <br><br><p>In this example, the q filter is going into the records' "date" fields and retrieving records that are greater than or equal to the year 2020.</p>
 
@@ -73,9 +93,11 @@
 
 {{> "code/python/3"}}
 
-<p>Although this code works, the size of data is limited to 10 since the data is split into pages. Thus, to access all 8000+ records available, the code must iterate through each page. To do this, you must wrap part of your code into a function that is called every time there is a "next" page available. To reduce the time it takes to run the code, you can also increase the size of each page using the size filter.</p>
+<p>Although this code works, the size of data is limited to 10 since the data is split into pages. Thus, to access all 8000+ records available, the code must iterate through each page using a pagination function. To reduce the time it takes to run the code, you can also increase the size of each page using the size filter.</p>
 
 {{> "code/python/4"}}
+
+<br><p>Congratulations! You now know how to use the Harvard Art Museums API.</p>
 </div>
 
 

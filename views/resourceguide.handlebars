@@ -5,51 +5,69 @@
   Here are a few of the Resources that the Harvard Art Museums provides through the API. Not comprehensive, this list quickly demonstrates the breadth of information while also giving short summarizations of the data they offer. For more details on each, click on the table to visit the Resource's page on our GitHub documentation.
 </p>
 
-<table class="resource-guide-table">
-  <tr class="header">
-    <th style="width:25%;">Resource</th>
-    <th style="width:45%;">Description</th>
-    <th style="width:30%;">Includes</th>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/object.md')">
-    <td class="resourcetitle">Object</td>
-    <td>Detailed information about each object in the Harvard Art Museums collections.</td>
-    <td>Object ID, artwork information, artist information, images, online view count, classification, medium, etc.</td>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/person.md')">
-    <td class="resourcetitle">Person</td>
-    <td>Information about individual artists, sitters, printers, donors, authors, publishers, and more.</td>
-    <td>Person ID, name, date/location of birth and death, culture, URL, Wikipedia ID</td>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/exhibition.md')">
-    <td class="resourcetitle">Exhibition</td>
-    <td>Records of each exhibition affiliated with the museum's collections going back several hundred years.</td>
-    <td>Exhibit ID, name, date, location, website URL</td>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/publication.md')">
-    <td class="resourcetitle">Publication</td>
-    <td>Records for publications (books, articles, essays, etc.) that mention or display objects in the museums collections.</td>
-    <td>Publication ID, title, citation, image, location, format, date, description, volume, author</td>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/image.md')">
-    <td class="resourcetitle" >Image</td>
-    <td>All images produced by and associated with the museum. </td>
-    <td>Image ID, image URL, IIIF URL, copyright, file ID</td>
-  </tr>
-  <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/annotation.md')">
-    <td class="resourcetitle">Annotation</td>
-    <td>All annotations produced by artificial intelligence in the collections. 5 seperate machine vision services analyze images of artworks, returning their predicitions, "annotations", of content.</td>
-    <td>Annotation ID, source, type, body, confidence, target, feature</td>
-  </tr>
-</table>
+<div class="table-wrapper">
+  <table class="resource-guide-table">
+    <tr class="header">
+      <th style="width:25%;">Resource</th>
+      <th style="width:45%;">Description</th>
+      <th style="width:30%;">Includes</th>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/object.md')">
+      <td class="resourcetitle">Object</td>
+      <td>Detailed information about each object in the Harvard Art Museums collections.</td>
+      <td>Object ID, artwork information, artist information, images, online view count, classification, medium, etc.</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/person.md')">
+      <td class="resourcetitle">Person</td>
+      <td>Information about individual artists, sitters, printers, donors, authors, publishers, and more.</td>
+      <td>Person ID, name, date/location of birth and death, culture, URL, Wikipedia ID</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/exhibition.md')">
+      <td class="resourcetitle">Exhibition</td>
+      <td>Records of each exhibition affiliated with the museum's collections going back several hundred years.</td>
+      <td>Exhibit ID, name, date, location, website URL</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/publication.md')">
+      <td class="resourcetitle">Publication</td>
+      <td>Records for publications (books, articles, essays, etc.) that mention or display objects in the museums collections.</td>
+      <td>Publication ID, title, citation, image, location, format, date, description, volume, author</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/image.md')">
+      <td class="resourcetitle" >Image</td>
+      <td>All images produced by and associated with the museum. </td>
+      <td>Image ID, image URL, IIIF URL, copyright, file ID</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/annotation.md')">
+      <td class="resourcetitle">Annotation</td>
+      <td>All annotations produced by artificial intelligence in the collections. 5 seperate machine vision services analyze images of artworks, returning their predicitions, "annotations", of content.</td>
+      <td>Annotation ID, source, type, body, confidence, target, feature</td>
+    </tr>
+  </table>
+</div>
 
 <p>For the full list of the Resources available in the Harvard Art Museums API, <a href="https://github.com/harvardartmuseums/api-docs">visit our GitHub documentation</a>.
+
+<div class="navigationbottom">
+  <div class="previous">
+    <a href="/6">
+      <i class="arrow left"></i>
+      Last Lesson: Manipulating Data
+    </a>
+  </div>
+  <div class="next">
+    <a href="/labels">
+      Resource Labels
+      <i class="arrow right"></i>
+    </a>
+  </div>
+</div>
 
 
 <script>
 function Redirect(url)
   {
-     document.location.href = url;
+    window.open(url, '_blank');
+
   }
 
 </script>

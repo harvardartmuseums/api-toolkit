@@ -94,7 +94,7 @@ app.get('/century', function(req, res) {
 });
 
 app.get('/classification', function(req, res) {
-  const description = "The Classification label is used to record both the broad classification and more specific Worktype of the object. Classifications are created and assigned by Harvard Art Museums curators.";
+  const description = "The Classification label is used to record both the broad classification of the object. Classifications are created and assigned by Harvard Art Museums curators.";
   const url = `https://api.harvardartmuseums.org/classification/?size=300&apikey=` + API_KEY;
     fetch(url).then(response => response.json())
     .then(results => {

@@ -12,6 +12,7 @@
   <p>Each query automatically breaks the records into groups of 10, and, to access the next set of 10, you must move forward to the next page. In the Info section, the link to the subsequent page is provided.
 
   <p class="exampletitle">In order to increase the size of records in each page to 50, append "&size=50" to the end of your query.</p>
+  <div class="table-wrapper">
   	<table id="url-breakdown">
   		<tr>
   			<td class="url1">https://api.harvardartmuseums.org/</td>
@@ -30,32 +31,36 @@
         <td class="url3 head3">Filter</td>
   		</tr>
   	</table>
+  </div>
 
   <br><br><p>When viewing the records, notice how each one has an ID number. Each record in the API has a unique identifier, which can be used to retrieve all information regarding that specific ID.</p>
 
   <p>For objects, their identifier is under the field "objectid". To view the information for only one object, use their object ID in the Resource block.</p>
 
   <p class="exampletitle">Georgia O'Keefe's <a href="https://www.harvardartmuseums.org/collections/object/312684"><i>Red and Pink</i></a></p>
+  <div class="table-wrapper">
     <table id="url-breakdown">
-      <tr>
-        <td class="url1">https://api.harvardartmuseums.org/</td>
-        <td class="url2">object/312684</td>
-        <td class="urlpunc">?</td>
-        <td class="url4">apikey=0000-0000-0000-0000</td>
-      </tr>
-      <tr>
-        <td class="url1 head1">URL</td>
-        <td class="url2 head2">Resource</td>
-        <td></td>
-        <td class="url4 head4">API</td>
-      </tr>
-    </table>
+        <tr>
+          <td class="url1">https://api.harvardartmuseums.org/</td>
+          <td class="url2">object/312684</td>
+          <td class="urlpunc">?</td>
+          <td class="url4">apikey=0000-0000-0000-0000</td>
+        </tr>
+        <tr>
+          <td class="url1 head1">URL</td>
+          <td class="url2 head2">Resource</td>
+          <td></td>
+          <td class="url4 head4">API</td>
+        </tr>
+      </table>
+    </div>
 
   <p>Here, you can see how much information the museum stores for each individual object. Not only is the museum sharing the basic information of the piece and artist, but it is also revealing the history of the piece related to the museum through accession information, exhibit history, and museum location.</p>
 
   <p>Not only are there IDs for object records, but IDs are also used to define labels for other filters such as "medium", "technique", and "culture".</p>
 
   <p class="exampletitle"> All objects made with pastels from the United States:</p>
+  <div class="table-wrapper">
   	<table id="url-breakdown">
   		<tr>
   			<td class="url1">https://api.harvardartmuseums.org/</td>
@@ -78,6 +83,7 @@
   			<td class="url4 head4">API</td>
   		</tr>
   	</table>
+  </div>
 
   	<br><br><p>In the example above, the Medium and Place fields are equal to numerical IDs rather than their names. While it is possible to find all of the names and IDs for mediums, for instance, through <a href="">this query</a>, we have compiled tables for the filters (medium, place, culture, worktype, etc.) for ease of access. To find the entire list of names with their corresponding IDs, visit the <a href="/labels">Resource Labels page</a>.
 

@@ -9,11 +9,24 @@
   <a class="link8" href="/worktype">Worktype</a><br>
 </div>
 
+<select onchange="changetable()" id="mobiletablelinks">
+  <option value="/century">Century</option>
+  <option value="/classification">Classification</option>
+  <option value="/culture">Culture</option>
+  <option value="/medium">Medium</option>
+  <option value="/period">Period</option>
+  <option value="/place">Place</option>
+  <option value="/technique">Technique</option>
+  <option value="/worktype">Worktype</option>
+</select>
+
 <h2>LABELS</h2>
 <h1>{{title}}</h1>
 <p><i>{{description}}</i></p>
 
-<input id="filter-value" class="inputfield" type="text" placeholder="Filter results">
+<div class="filter-wrap">
+  <input id="filter-value" class="inputfield" type="text" placeholder="Filter results">
+</div>
 
 <table id="endpoint-table">
   <tr class="header">
@@ -29,6 +42,21 @@
     </tr>
   {{/each}}
 </table>
+
+<div class="navigationbottom">
+  <div class="previous">
+    <a href="/resources">
+      <i class="arrow left"></i>
+      Resource Guide
+    </a>
+  </div>
+  <div class="next">
+    <a href="/">
+      Home
+      <i class="arrow right"></i>
+    </a>
+  </div>
+</div>
 
 
 <script>
@@ -52,4 +80,8 @@ var table = new Tabulator("#endpoint-table", {
   {title:"Object Count", field:"objectcount", sorter:"number"}
   ],
 });
+
+function changetable() {
+        window.location = document.getElementById("mobiletablelinks").value;
+    }
 </script>

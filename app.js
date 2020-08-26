@@ -1,3 +1,6 @@
+// load application specific environment variables
+require('dotenv').config();
+
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var fetch = require('node-fetch')
@@ -8,7 +11,7 @@ var Tabulator = require('tabulator-tables');
 
 const path = require('path');
 
-const API_KEY = '67669ae0-b77e-11e8-bf0e-e9322ccde4db';
+const API_KEY = process.env.API_KEY;
 
 
 hbs.getPartials(__dirname + 'views/partials')

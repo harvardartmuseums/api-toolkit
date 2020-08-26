@@ -9,6 +9,10 @@ router.get('/', function (req, res, next) {
     res.render('home');
 });
 
+router.get('/about', function (req, res, next) {
+  res.render('about');
+});
+
 router.get('/1', function (req, res, next) {
     res.render('1_museum_data');
 });

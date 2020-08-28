@@ -1,13 +1,13 @@
 {
   "name": "api-toolkit",
   "version": "1.0.0",
-  "description": "",
+  "description": "An introductory guide to the HAM API",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

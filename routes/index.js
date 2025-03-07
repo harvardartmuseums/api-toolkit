@@ -37,6 +37,10 @@ router.get('/6', function (req, res, next) {
     res.render('6_manipulate_data');
 });
 
+router.get('/tools/playground', function (req, res, next) {
+    res.render('tools_playground');
+});
+
 router.get('/labels', function (req, res, next) {
     res.redirect('/century');
 });

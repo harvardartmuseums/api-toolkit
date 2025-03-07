@@ -27,7 +27,6 @@ h3 {
   font-weight: 400;
   font-size: 20px;
   color: #333;
-  text-align: center;
   margin: 40px auto;
 }
 
@@ -397,7 +396,7 @@ b {
 }
 
 .filter-wrap {
-  text-align: center;
+  text-align: left;
 }
 
 .navigationtop {

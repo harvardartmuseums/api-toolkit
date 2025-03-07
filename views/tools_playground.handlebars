@@ -1,0 +1,312 @@
+<h2>TOOLS</h2>
+<h1>Data Playground</h1>
+
+<p>
+	Use your API key to explore the museum's data. Refer to the <a href="https://hvrd.art/api" target="_blank">API documentation</a> for field definitions and details on building requests.
+</p>
+<p>
+	Enter values in the request builder form. The formatted request at the bottom of the form updates as you type. Click the Run Request button to run your query on the HAM API. Results will appear under the JSON Output heading.
+</p>
+
+<style>
+	#controlPanel {
+		width: 100%;
+		height: 100%;
+		align-items: start;
+	}
+	#flexbox {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		gap: 30px;
+		width: 100%;
+		height: 100%;
+	}
+	#query {
+		background-color:#f0f0f0;
+		box-sizing: border-box;
+		padding: .25vw .5vw;
+		min-height: 10%;
+		height: 10vh;
+		border: 1px solid #AAAAAA;
+		word-wrap: break-word;
+		overflow: auto;
+		margin-bottom: 10px;
+		font-size: 90%;
+	}
+	#json {
+		box-sizing: border-box;
+		border: 1px solid #AAAAAA;
+		padding: .5vw 1vw;
+		display: block;
+		width: 100%;
+		height: 60vh;
+		overflow: auto;
+		white-space: pre;
+	}
+	select {
+		padding-block: 2px;
+	}
+</style>
+
+<div>
+    <div id="controlPanel">
+        <div id="flexbox">
+            <div style="width: 40%;">
+                <h3>Request Builder</h3>
+
+				<table style="width: 100%;margin-bottom:20px;">
+					<tr>
+						<td><label>Endpoint</label></td>
+						<td>
+							<select id="field-endpoint">
+								<option>object</option>
+								<option>exhibition</option>
+								<option>person</option>
+								<option>publication</option>
+								<option>gallery</option>
+								<option>image</option>
+								<option>annotation</option>
+								<option>activity</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="field-apikey">API Key</label></td>
+						<td><input type="text" id="field-apikey" placeholder="your api key" style="width: 100%;"></td>
+					</tr>
+					<tr>
+						<td><label for="field-size">Size</label></td>
+						<td><input type="range" min="0" max="100" value="10" id="field-size" style="width: 60%;">&nbsp;<span id="field-size-value">10</span></td>
+					</tr>
+					<tr>
+						<td><label for="field-page">Page</label></td>
+						<td><input type="range" min="1" max="100" value="1" id="field-page" style="width: 60%;">&nbsp;<span id="field-page-value">1</span></td>
+					</tr>
+					<tr>
+						<td><label for="field-sort">Sort</label></td>
+						<td><input type="text" id="field-sort" style="width: 50%;">&nbsp;<select id="field-sortorder"><option></option><option>asc</option><option>desc</option></select></td>
+					</tr>
+					<tr>
+						<td><label for="field-fields">Fields</label></td>
+						<td><textarea id="field-fields" rows="3" style="width: 100%;"></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="field-q">Search Critera (q)</label></td>
+						<td><textarea id="field-q" rows="3" style="width: 100%;"></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="field-aggregations">Aggregations (<a href="https://github.com/harvardartmuseums/api-docs/blob/master/sections/analysis.md" target="_blank">?</a>)</label></td>
+						<td><textarea id="field-aggregations" rows="3" style="width: 100%;"></textarea></td>
+					</tr>
+				</table>
+				
+                <h4>Formatted Request</h4>
+                <div id="query"></div>
+				<button onclick="updateJSON()">Run Request</button>
+            </div>
+            <div style="width: 60%;">
+                <h3>JSON Output</h3>
+
+                <div id="json"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+	let request = {
+		baseURL: "https://api.harvardartmuseums.org",
+		endpoint: "object",
+		apikey: "",
+		size: 10,
+		page: 1,
+		sort: "",
+		sortorder: "asc",
+		fields: "",
+		parameters: [],
+		aggregations: "",
+		q: "",
+		url: ""
+	};
+
+	function updateRequestURL() {
+		let fields = "";
+		if (request.fields !== "") {
+			fields = "&fields=" + request.fields;
+		}
+		let sort = "";
+		let sortorder = "";
+		if (request.sort !== "") {
+			sort = "&sort=" + request.sort;
+			if (request.sortorder !== "") {
+				sortorder = "&sortorder=" + request.sortorder;
+			}
+		}
+		let q = "";
+		if (request.q !== "") {
+			q = "&q=" + request.q;
+		}
+		let aggregations = "";
+		if (request.aggregations !== "") {
+			aggregations = "&aggregation=" + request.aggregations;
+		}		
+		let size = "&size=" + request.size.toString();
+		let page = "&page=" + request.page.toString();
+		request.url = `${request.baseURL}/${request.endpoint}?apikey=${request.apikey}${fields}${q}${sort}${sortorder}${size}${page}${aggregations}`;
+	}
+
+	function prettify(string) {
+		var colorful = "";
+		var regex = /"#([0-9]|[a-z]){6}"/;
+		var index = 0;
+		var text = "";
+		while (string.length > 0) {
+			index = string.search(regex);
+			if (index != -1) {
+				text = regex.exec(string)[0];
+				colorful += string.slice(0, index);
+				colorful += "<span style=\"color: " + text.slice(1, -1) + "\">";
+				colorful += text + "</span>";
+				string = string.slice(index + 9);
+			} else {
+				colorful += string;
+				string = "";
+			}
+		}
+
+		var bold = "";
+		regex = /"[^"]*":/;
+		while (colorful.length > 0) {
+			index = colorful.search(regex);
+			if (index != -1) {
+				text = regex.exec(colorful)[0];
+				bold += colorful.slice(0, index);
+				bold += "<strong>" + text.slice(0, -1) + "</strong>";
+				colorful = colorful.slice(index + (text.length - 1));
+			} else {
+				bold += colorful;
+				colorful = "";
+			}
+		}
+
+		var linked = "";
+		regex = /"http[^"]*"/;
+		while (bold.length > 0) {
+			index = bold.search(regex);
+			if (index != -1) {
+				text = regex.exec(bold)[0];
+				linked += bold.slice(0, index);
+				linked += "\"<a href=" + text + " target=\"_blank\">" + text.slice(1, -1) + "</a>";
+				bold = bold.slice(index + (text.length - 1));
+			} else {
+				linked += bold;
+				bold = "";
+			}
+		}
+
+		var email = "";
+		regex = /"[^"]*@[^"]*"/;
+		while (linked.length > 0) {
+			index = linked.search(regex);
+			if (index != -1) {
+				text = regex.exec(linked)[0];
+				email += linked.slice(0, index);
+				email += "\"<a href=\"mailto:" + text.slice(1, -1) + "\" target=\"_top\">" + text.slice(1, -1) + "</a>";
+				linked = linked.slice(index + (text.length - 1));
+			} else {
+				email += linked;
+				linked = "";
+			}
+		}
+
+		return email;
+		}
+
+	function updateJSON() {
+		var xmlrequest = new XMLHttpRequest();
+
+		xmlrequest.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200) {
+					document.getElementById("json").innerHTML = prettify(JSON.stringify(JSON.parse(this.responseText), null, 2));
+				} else {
+					document.getElementById("json").innerHTML = this.responseText;
+				}
+			}
+		};
+
+		xmlrequest.open("GET", request.url, true);
+		xmlrequest.send();
+	}
+
+	function handleEnter(e) {
+		if (e.which == "13") {
+			e.preventDefault();
+			return false;
+		}
+	}
+
+	function handleKey(e) {
+		let field = e.target.id.replace("field-", "");
+		request[field] = e.target.value;
+		
+		updateRequestURL();
+		document.getElementById("query").innerText = request.url;
+	}
+
+	function handleSelect(e) {
+		let field = e.target.id.replace("field-", "");
+		request[field] = e.target.value;
+		
+		updateRequestURL();
+		document.getElementById("query").innerText = request.url;
+	}
+
+	function handlePaste(e) {
+		e.preventDefault();
+
+		if (e.clipboardData) {
+			content = (e.originalEvent || e).clipboardData.getData('text/plain');
+			document.execCommand('insertText', false, content);
+		}
+		else if (window.clipboardData) {
+			content = window.clipboardData.getData('Text');
+			document.selection.createRange().pasteHTML(content);
+		}
+	}
+	
+	function handleSlider(e) {
+		let field = e.target.id.replace("field-", "");
+		request[field] = e.target.value;
+
+		document.getElementById(e.target.id + "-value").innerText = request[field];
+
+		updateRequestURL();
+		document.getElementById("query").innerText = request.url;
+	}
+
+	document.querySelectorAll("input").forEach(i => {
+		i.addEventListener("keyup", handleKey);
+		i.addEventListener("keypress", handleEnter);
+		i.addEventListener("paste", handlePaste);
+
+	});
+	document.querySelectorAll("input[type=range]").forEach(i => {
+		i.addEventListener("input", handleSlider);
+	});
+	document.querySelectorAll("select").forEach(i => {
+		i.addEventListener("change", handleSelect);
+	});
+	document.querySelectorAll("textarea").forEach(i => {
+		i.addEventListener("keyup", handleKey);
+		i.addEventListener("keypress", handleEnter);
+		i.addEventListener("paste", handlePaste);
+	});
+	
+	updateRequestURL();
+	document.getElementById("query").innerText = request.url;
+	</script>

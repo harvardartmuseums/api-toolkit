@@ -347,47 +347,13 @@ b {
 .tablelinks {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .tablelinks a {
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  margin-bottom: 50px;
-}
-
-.link1 {
-  background-color: Tomato;
-}
-
-.link2 {
-  background-color: SlateBlue;
-}
-
-.link3 {
-  background-color: DodgerBlue;
-}
-
-.link4 {
-  background-color: MediumSeaGreen;
-}
-
-.link5 {
-  background-color: Orange;
-}
-
-.link6 {
-  background-color: Coral;
-}
-
-.link7 {
-  background-color: DarkViolet;
-}
-
-.link8 {
-  background-color: RoyalBlue;
+  padding: 10px 10px;
+  margin-bottom: 10px;
 }
 
 .inputfield{
@@ -543,10 +509,6 @@ b {
   display: none;
 }
 
-#mobiletablelinks {
-  display: none;
-}
-
 .table-wrapper {
   overflow-x: scroll;
 }
@@ -673,31 +635,10 @@ b {
   #mobilemenu h2 {
     margin-bottom: 10px;
   }
-
-  .tablelinks {
-    display: none;
-  }
-
-  #mobiletablelinks {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    padding: 5px;
-  }
 }
 
 
 @media only screen and (min-width: 1000px) and (max-width: 1200px) {
-  #mobiletablelinks {
-    display: block;
-    margin-bottom: 30px;
-    padding: 5px;
-  }
-
-  .tablelinks {
-    display:none;
-  }
-
   .sidebar {
     width: 25%
   }

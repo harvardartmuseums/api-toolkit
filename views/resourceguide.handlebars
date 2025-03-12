@@ -2,10 +2,10 @@
 <h1>Resource Guide</h1>
 
 <p>
-  Here are a few of the Resources that the Harvard Art Museums provides through the API. Not comprehensive, this list quickly demonstrates the breadth of information while also giving short summarizations of the data they offer. For more details on each, click on the table to visit the Resource's page on our GitHub documentation.
+  These are the primary Resources available via the Harvard Art Museums' API. The list hints at the breadth of information in the API. Click on an item in the table to visit the Resource's page on our GitHub documentation. Docuemtation includes field definitions along with example queries.
 </p>
 
-<div class="table-wrapper">
+<div>
   <table class="resource-guide-table">
     <tr class="header">
       <th style="width:25%;">Resource</th>
@@ -34,13 +34,23 @@
     </tr>
     <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/image.md')">
       <td class="resourcetitle" >Image</td>
-      <td>All images produced by and associated with the museum. </td>
+      <td>All images produced by and associated with the museum's collections. </td>
       <td>Image ID, image URL, IIIF URL, copyright, file ID</td>
     </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/gallery.md')">
+      <td class="resourcetitle" >Gallery</td>
+      <td>Basic information about physical spaces within the museums’ building at 32 Quincy Street, Cambridge, MA.</td>
+      <td>Gallery ID, name, theme, floor</td>
+    </tr>    
     <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/annotation.md')">
       <td class="resourcetitle">Annotation</td>
-      <td>All annotations produced by artificial intelligence in the collections. 5 seperate machine vision services analyze images of artworks, returning their predicitions, "annotations", of content.</td>
+      <td>All annotations produced by artificial intelligence in the collections. 5 seperate computer vision services and 4 large language models  analyze images of artworks, returning their predicitions, "annotations", of content.</td>
       <td>Annotation ID, source, type, body, confidence, target, feature</td>
+    </tr>
+    <tr class="resource" onclick="Redirect('https://github.com/harvardartmuseums/api-docs/blob/master/sections/activity.md')">
+      <td class="resourcetitle">Activity</td>
+      <td>Statistical information on how each item in the collection is used, broken down by object, activity type, and day.</td>
+      <td>Activity ID, type, object ID, activity date, activity count</td>
     </tr>
   </table>
 </div>

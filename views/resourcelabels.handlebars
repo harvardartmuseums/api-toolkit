@@ -1,28 +1,26 @@
+<h2>REFERENCES</h2>
+<h1>Resources Labels</h1>
+
+<p>
+  These are the secondary Resources available via the Harvard Art Museums' API. This list represents the distinct vocabularies used to describe, label, and categorize objeccts in the collections. Click on a label to browse the available values.
+</p>
+
 <div class="tablelinks">
-  <a class="link1" href="/century">Century</a><br>
-  <a class="link2" href="/classification">Classification</a><br>
-  <a class="link3" href="/culture">Culture</a><br>
-  <a class="link4" href="/medium">Medium</a><br>
-  <a class="link5" href="/period">Period</a><br>
-  <a class="link6" href="/place">Place</a><br>
-  <a class="link7" href="/technique">Technique</a><br>
-  <a class="link8" href="/worktype">Worktype</a><br>
+  <a href="/resources/label/century">Century</a><br>
+  <a href="/resources/label/classification">Classification</a><br>
+  <a href="/resources/label/culture">Culture</a><br>
+  <a href="/resources/label/medium">Medium</a><br>
+  <a href="/resources/label/period">Period</a><br>
+  <a href="/resources/label/place">Place</a><br>
+  <a href="/resources/label/support">Support</a><br>
+  <a href="/resources/label/technique">Technique</a><br>
+  <a href="/resources/label/worktype">Worktype</a><br>
 </div>
 
-<select onchange="changetable()" id="mobiletablelinks">
-  <option value="/century">Century</option>
-  <option value="/classification">Classification</option>
-  <option value="/culture">Culture</option>
-  <option value="/medium">Medium</option>
-  <option value="/period">Period</option>
-  <option value="/place">Place</option>
-  <option value="/technique">Technique</option>
-  <option value="/worktype">Worktype</option>
-</select>
+<hr>
 
-<h2>LABELS</h2>
-<h1>{{title}}</h1>
-<p><i>{{description}}</i></p>
+<h3>{{title}}</h3>
+<i>{{description}}</i>
 
 <div class="filter-wrap">
   <input id="filter-value" class="inputfield" type="text" placeholder="Filter name">
@@ -58,7 +56,6 @@ function updateFilter() {
 
 document.getElementById("filter-value").addEventListener("keyup", updateFilter);
 
-
 var table = new Tabulator("#endpoint-table", {
   height:"500px",
   layout:"fitColumns",
@@ -69,8 +66,4 @@ var table = new Tabulator("#endpoint-table", {
   {title:"Object Count", field:"objectcount", sorter:"number"}
   ],
 });
-
-function changetable() {
-        window.location = document.getElementById("mobiletablelinks").value;
-    }
 </script>
